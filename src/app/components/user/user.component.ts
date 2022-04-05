@@ -27,7 +27,6 @@ export class UserComponent implements OnInit {
 
   getUsers() {
     this.userList = this.userService.getUsers()
-    console.log(this.userList)
   }
 
   addUser(form: NgForm) {
@@ -49,7 +48,6 @@ export class UserComponent implements OnInit {
   }
 
   editUser(user: any) {
-    console.log(user)
     this.userService.userSelected = user;
   }
 
