@@ -1,0 +1,11 @@
+.font-title{
+    font-family: 'Raleway', sans-serif;
+    font-size: 50px;
+    font-weight:bolder;
+    color: #718896;
+    align-content: flex-end;
+}
+
+.nav-style{
+    background-image: linear-gradient(100deg, #139a4e 0%, #FFFF 60%);
+}
