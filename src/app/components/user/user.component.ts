@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  userList: User[] = [];
+  constructor(
+    public userService: UserService,
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.getUsers()
   }
+
+  getUsers() {
+    this.userList = this.userService.getUsers()
+    console.log(this.userList)
+  }
+
+  addUser(form: NgForm) {
+    this.userService.createUser(form.value)
+    this.getUsers();
+    form.reset();
+
+  }
+
+  editUser (user:any){
+
+  }
+
+  deleteUser(id:String, form:NgForm){
+
+  }
+
+
 
 }

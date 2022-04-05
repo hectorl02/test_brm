@@ -1,0 +1,52 @@
+.font-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    color: #718896;
+}
+
+tr, td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.margin-button{
+    margin-right: 5px;
+}
+
+::placeholder {
+    color: #666;
+    opacity: 1;
+}
+
+.btn.btn-primary[disabled] {
+    background-color: #2195f342;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+
+.fecha-derecha {
+    display: block;
+    text-align: right;
+    width: 100%;
+}
+
+.label{
+    margin-left: 2px;
+    color: #666;
+}
+
+.required:after { 
+    content:" *"; 
+    color: red;
+    font-weight: bold;
+}
+
+.label-required { 
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+}
