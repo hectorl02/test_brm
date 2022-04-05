@@ -6,7 +6,12 @@
                     <div class="d-flex justify-content-end">
                         <label class="font-title">Ingreso de información</label>
                     </div>
-                    <form #userForm="ngForm">
+                    <form #userForm="ngForm" style="margin-top: 30px;">
+
+                        <div class="form-group row">
+                            <input style="display: none;" type="text" class="form-control" name="_id" placeholder="ID"
+                                [(ngModel)]="userService.userSelected._id" />
+                        </div>
 
                         <div class="form-group row">
                             <div class="col-11">
@@ -28,7 +33,8 @@
                             <div class="col-11">
                                 <label class="mt-3 label">Fecha de nacimiento</label>
                                 <input type="date" class="form-control pt-0 fecha-derecha" name="birth_date"
-                                [(ngModel)]="userService.userSelected.birth_date" placeholder="Fecha de nacimiento" required>
+                                    [(ngModel)]="userService.userSelected.birth_date" placeholder="Fecha de nacimiento"
+                                    required>
                             </div>
                             <div class="col-1 mt-4 pt-3 required"></div>
                         </div>
@@ -49,11 +55,11 @@
                             <div class="col-1 m-auto pt-2 required"></div>
                         </div>
 
-                        
                         <label class="mt-2 label-required">* campos obligatorios</label>
+
                         <div class="d-flex justify-content-center mt-3">
-                            <button class="btn btn-primary" [disabled]="userForm.invalid"
-                                (click)="addUser(userForm)" readonly="readonly">Guardar</button>
+                            <button class="btn btn-primary" [disabled]="userForm.invalid" (click)="addUser(userForm)"
+                                readonly="readonly">Guardar</button>
                         </div>
                     </form>
                 </div>
@@ -68,8 +74,8 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="filterId" id="filter"
-                                    placeholder="Busqueda por ID">
+                                <input type="text" class="form-control" name="filterData" id="filter"
+                                    placeholder="Busqueda" [(ngModel)]="filterData">
                             </div>
                         </div>
                     </div>
@@ -87,12 +93,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let user of userList; index as i ">
-                                <td class="pt-3">{{i + 1}}</td>
+                            <tr *ngFor="let user of userList">
+                                <td class="pt-3">{{user._id}}</td>
                                 <td class="pt-3">{{user.name}}</td>
                                 <td class="pt-3">{{user.phone}}</td>
                                 <td class="pt-3">{{user.birth_date}}</td>
-                                <td class="pt-3">{{user.birth_date}}</td>
+                                <td class="pt-3">{{user.birth_date | age}}</td>
                                 <td class="pt-3">{{user.address}}</td>
                                 <td class="pt-3">{{user.email}}</td>
                                 <td>

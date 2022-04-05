@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserComponent implements OnInit {
 
+  filterData = '';
+
   userList: User[] = [];
   constructor(
     public userService: UserService,
@@ -27,20 +29,27 @@ export class UserComponent implements OnInit {
   }
 
   addUser(form: NgForm) {
-    this.userService.createUser(form.value)
-    this.getUsers();
-    form.reset();
-
+    if(form.value._id ){
+      let ind = parseInt(form.value._id) - 1
+      this.userService.deleteUser(ind.toString())
+      this.userService.createUser(form.value)
+      this.getUsers();
+      form.reset();
+    } else {
+      this.userService.createUser(form.value)
+      this.getUsers();
+      form.reset();
+    }      
   }
 
   editUser (user:any){
-
+    console.log(user)
+    this.userService.userSelected = user;
   }
 
-  deleteUser(id:String, form:NgForm){
-
+  deleteUser(id:string, form:NgForm){
+    console.log(id)
+    this.userService.deleteUser(id)
   }
-
-
 
 }

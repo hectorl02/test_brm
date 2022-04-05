@@ -26,20 +26,18 @@ export class UserService {
   }
   
   createUser (user:any) {
+    
     this.userList.push(user)
+    let ind = this.userList.length;
+    this.userList[ind - 1]._id = ind.toString();
   }
 
   editUser (user:any){
 
   }
 
-  deleteEmpleado(_id:String){
-    this.userList.pop()
-  
+  deleteUser(_id:string){
+    this.userList.splice(parseInt(_id) - 1,1)  
   }
-
-
-
- 
 
 }
